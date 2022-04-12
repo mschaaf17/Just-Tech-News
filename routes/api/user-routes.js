@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post } = require('../../models');
+const { User, Post, Vote } = require('../../models');
 
 // get all users
 router.get('/', (req, res) => {
@@ -23,6 +23,13 @@ router.get('/:id', (req, res) => {
       {
         model: Post,
         attributes: ['id', 'title', 'post_url', 'created_at']
+      },
+      //when querying a single user we retrieve the title info of every post theyve voted on
+      {
+        model: Post,
+        attributes: ['title'],
+        through: Vote,
+        as: 'voted_posts'
       }
     ]
   })
