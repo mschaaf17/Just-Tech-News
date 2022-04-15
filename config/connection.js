@@ -17,3 +17,4 @@ sequelize = new Sequelize(process.env.JAWSDB_URL)
 });
 }
 module.exports = sequelize;
+//https://just-tech-news.herokuapp.com/api/posts --test the app 
